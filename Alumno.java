@@ -1,40 +1,21 @@
-import java.util.ArrayList;
 import java.util.List;
 
 public class Alumno extends Persona {
-
     private String codigoAlumno;
     private List<Curso> listaCursos;
 
     public Alumno(String dni, String nombre, String apellido,
-                  String codigoAlumno) {
-
+                   String codigoAlumno, List<Curso> listaCursos) {
         super(dni, nombre, apellido);
-
         this.codigoAlumno = codigoAlumno;
-        this.listaCursos = new ArrayList<>();
-    }
-
-    public String getCodigoAlumno() {
-        return codigoAlumno;
-    }
-
-    public List<Curso> getListaCursos() {
-        return listaCursos;
-    }
-
-    public void agregarCurso(Curso curso) {
-        listaCursos.add(curso);
+        this.listaCursos = listaCursos;
     }
 
     public void mostrarCursos() {
-
-        System.out.println("Cursos del alumno "
-                + getNombre() + " " + getApellido());
+        System.out.println("Cursos matriculados:");
 
         for (Curso curso : listaCursos) {
-            System.out.println("- " + curso.getNombreCurso()
-                    + " | Nota: " + curso.getNota());
+            System.out.println("- " + curso.getNombreCurso());
         }
     }
 }
