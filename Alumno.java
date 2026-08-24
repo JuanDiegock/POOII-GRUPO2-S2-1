@@ -1,19 +1,40 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Alumno extends Persona {
-    public String codigoAlumno;
-    public String nombreAlumno; // Asegúrate de declarar esta variable si no viene de Persona
-    public List<Curso> listaCursos; // Tipo cambiado para coincidir con el constructor
 
-    public Alumno(String codigo, String nombre, List<Curso> listaCursos) {
-        // super(nombre); // Descomenta esta línea si Persona requiere el nombre en su constructor
-        this.codigoAlumno = codigo;
-        this.nombreAlumno = nombre;
-        this.listaCursos = listaCursos;
-        this.leeCursosAlumno("CursosAlumnos.txt");
+    private String codigoAlumno;
+    private List<Curso> listaCursos;
+
+    public Alumno(String dni, String nombre, String apellido,
+                  String codigoAlumno) {
+
+        super(dni, nombre, apellido);
+
+        this.codigoAlumno = codigoAlumno;
+        this.listaCursos = new ArrayList<>();
     }
 
-    public void leeCursosAlumno(String nombreArchivo) {
-        // Aquí va la lógica para leer el archivo TXT
+    public String getCodigoAlumno() {
+        return codigoAlumno;
+    }
+
+    public List<Curso> getListaCursos() {
+        return listaCursos;
+    }
+
+    public void agregarCurso(Curso curso) {
+        listaCursos.add(curso);
+    }
+
+    public void mostrarCursos() {
+
+        System.out.println("Cursos del alumno "
+                + getNombre() + " " + getApellido());
+
+        for (Curso curso : listaCursos) {
+            System.out.println("- " + curso.getNombreCurso()
+                    + " | Nota: " + curso.getNota());
+        }
     }
 }
